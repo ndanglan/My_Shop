@@ -581,13 +581,125 @@
     
 }
 
+.header__tablet-bars-icon{
+    margin-right: ;
+}
+
+.header__bars{
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    display: none;
+}
+
+.header__tablet-bars-icon{
+    font-size: 2.6rem;
+    padding-top: 4px;
+}
+
+.header__bars-checkbox{
+    display: none;
+}
+
+.header__menu{
+    position: fixed;
+    top: 54px;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: var(--white-color);
+    z-index: 2;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform linear 0.2s, opacity linear 0.2s;
+}
+
+.header__menu-list{
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    box-shadow: 2px 0px 2px rgb(0,0,0,0.05);
+    display: block;
+    justify-content: space-around;
+}
+
+.header__menu-item{
+    /* padding-top: 12px; */
+    padding: 16px 16px;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+/* .header__menu-link:hover{
+    color: var(--primary-color);
+} */
+
+.header__menu-item:first-child{
+    border-top: none;
+}
+
+.header__menu-item--active .header__menu-link{
+    color: var(--primary-color);
+}
+
+.header__menu-link{
+    --line-height: 2rem;
+    display: block;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: var(--line-height);
+    min-height: var(--line-height);
+    max-width: 100%;
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.menu__overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: none;
+    animation: fadeIn linear 0.2s;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+.header__bars-checkbox:checked ~ .menu__overlay{
+    display: block;
+}
+
+.header__bars-checkbox:checked ~ .header__menu{
+    transform: translateX(0%);
+    opacity: 1;
+}
+
 .header__mobile-search{
     padding: 0 12px;
+    display: none;
 }
 
 .header__mobile-search-icon{
     font-size: 2.6rem;
     color: var(--white-color);
+    padding-top: 6px;
+}
 }
 
 .header__logo{
@@ -600,6 +712,7 @@
     /* trong trình duyện IE thẻ a sẽ có gạch chân và chữ xanh  */
     display: block;
     line-height: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header__logo-img{
@@ -635,6 +748,7 @@
     display: inline-block;
     padding:0 12px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header__cart-wrap:hover .header__cart-list{
@@ -1083,6 +1197,63 @@
     color:var(--primary-color);
 }
 
+/* Mobile category */
+.mobile-category{
+    
+}
+
+.mobile-category__list{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    display: none;
+}
+
+.mobile-category__list::-webkit-scrollbar{
+    display: none;
+}
+
+.mobile-category__item{
+    flex-shrink: 0;
+    margin-right:10px ;
+}
+
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category__link {
+    background-color: #87AFD8;
+}
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category__link {
+    background-color: #76C9BD;
+}
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category__link {
+    background-color: #88CF81;
+}
+
+.mobile-category__link{
+    --line-height: 2rem;
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: var(--line-height);
+    height: calc(var(--line-height)*2);
+    overflow: hidden;
+    text-align:center;
+    display: block;
+    padding: 0 6px;
+/* dấu 3 chấm  */
+    display: -webkit-box;
+    -webkit-box-orient:vertical ;
+    -webkit-line-clamp: 2;
+
+    width: 110px;
+    border-radius: 4px;
+/* không bôi đậm được  */
+-webkit-user-select: none;
+    /* bỏ highlight khi bấm */
+    -webkit-tap-highlight-color: transparent;
+}
 /* home sort +filter */
 .home-filter{
     background-color: rgba(0,0,0,0.04);
@@ -1413,6 +1584,7 @@ i.home-product-item__like-icon-fill {/*được ưu tiên khi có tên thẻ  */
 .footer__dowload-apps{
     margin-left: 16px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
 }
